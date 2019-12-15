@@ -4,8 +4,10 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'Xuyuanp/nerdtree-git-plugi'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
 
 "========== ale (linting)
 "Plug 'dense-analysis/ale'
@@ -60,14 +62,28 @@ nnoremap <F5> mzgggqG`z`
 "==========Prettier indent
 let g:prettier#config#tab_width = 4
 
-" Put these lines at the very end of your vimrc file.
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-" Load all plugins now.
-" Plugins need to be added to runtimepath before helptags can be generated.
-packloadall
-" Load all of the helptags now, after plugins have been loaded.
-" All messages and errors will be ignored.
-silent! helptags ALL
+"==========Color theme
+colorscheme gruvbox
+set background=dark
+
+" sync open file with NERDTree
+" Check if NERDTree is open or active
+function! IsNERDTreeOpen()        
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+"Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+"file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+
+" Highlight currently open buffer in NERDTree
+autocmd BufEnter * call SyncTree()"
 
 
 "========== <TAB>: completion.
@@ -202,3 +218,5 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+
