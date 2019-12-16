@@ -67,6 +67,7 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 "==========Color theme
 colorscheme gruvbox
 set background=dark
+set t_Co=256
 
 " sync open file with NERDTree
 " Check if NERDTree is open or active
