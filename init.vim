@@ -8,14 +8,15 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
-nmap ge :CocCommand explorer<CR>
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
+
+set expandtab
+set tabstop=4
+retab
+set shiftwidth=4
 
 colorscheme gruvbox
 set background=dark
@@ -148,3 +149,12 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" Noah
+noremap <C-A-l> :Format<CR>
+noremap <C-A-f> :Lines<CR>
+noremap <A-1> :CocCommand explorer<CR>
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
