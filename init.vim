@@ -12,7 +12,6 @@ Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
-
 set expandtab
 set tabstop=4
 retab
@@ -90,8 +89,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>l  <Plug>(coc-format-selected)
+nmap <leader>l  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -151,10 +150,20 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " Noah
-noremap <C-A-l> :Format<CR>
-noremap <C-A-f> :Lines<CR>
-noremap <A-1> :CocCommand explorer<CR>
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+noremap <Leader>o :Files<CR>
+noremap <Leader>L :Format<CR>
+noremap <Leader>F :Lines<CR>
+noremap <Leader>f :BLines<CR>
+noremap <Leader>1 :CocCommand explorer<CR>
 noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
+:vnoremap < <gv
+:vnoremap > >gv
