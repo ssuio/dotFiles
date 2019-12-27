@@ -91,8 +91,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>l  <Plug>(coc-format-selected)
-nmap <leader>l  <Plug>(coc-format-selected)
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -159,8 +159,9 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 noremap <Leader>o :Files<CR>
+noremap <Leader>b :Buffers<CR>
 noremap <Leader>L :Format<CR>
-noremap <Leader>F :Lines<CR>
+noremap <Leader>F :CocList grep<CR>
 noremap <Leader>f :BLines<CR>
 noremap <Leader>1 :CocCommand explorer<CR>
 noremap <Leader>y "*y
@@ -170,6 +171,7 @@ noremap <Leader>P "+p
 :vnoremap < <gv
 :vnoremap > >gv
 
+<<<<<<< HEAD
 
 " navigate chunks of current buffer
 nmap [g <Plug>(coc-git-prevchunk)
@@ -183,3 +185,27 @@ omap ig <Plug>(coc-git-chunk-inner)
 xmap ig <Plug>(coc-git-chunk-inner)
 omap ag <Plug>(coc-git-chunk-outer)
 xmap ag <Plug>(coc-git-chunk-outer)
+=======
+" lightline
+let g:lightline = {
+  \ 'active': {
+  \   'left': [
+  \     [ 'mode', 'paste' ],
+  \     [ 'ctrlpmark', 'git', 'diagnostic', 'cocstatus', 'filename', 'method' ]
+  \   ],
+  \   'right':[
+  \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ],
+  \     [ 'blame' ]
+  \   ],
+  \ },
+  \ 'component_function': {
+  \   'blame': 'LightlineGitBlame',
+  \ }
+\ }
+
+function! LightlineGitBlame() abort
+  let blame = get(b:, 'coc_git_blame', '')
+  " return blame
+  return winwidth(0) > 120 ? blame : ''
+endfunction
+>>>>>>> c933664b62b7be68cfd57e02ec55308fb095c946
