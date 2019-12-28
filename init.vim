@@ -170,6 +170,10 @@ noremap <Leader>P "+p
 :vnoremap < <gv
 :vnoremap > >gv
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 89668a4845bd28168a879b4c717e1ba172c354a6
 
 " navigate chunks of current buffer
 nmap [g <Plug>(coc-git-prevchunk)
@@ -183,3 +187,30 @@ omap ig <Plug>(coc-git-chunk-inner)
 xmap ig <Plug>(coc-git-chunk-inner)
 omap ag <Plug>(coc-git-chunk-outer)
 xmap ag <Plug>(coc-git-chunk-outer)
+<<<<<<< HEAD
+=======
+=======
+" lightline
+let g:lightline = {
+  \ 'active': {
+  \   'left': [
+  \     [ 'mode', 'paste' ],
+  \     [ 'ctrlpmark', 'git', 'diagnostic', 'cocstatus', 'filename', 'method' ]
+  \   ],
+  \   'right':[
+  \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ],
+  \     [ 'blame' ]
+  \   ],
+  \ },
+  \ 'component_function': {
+  \   'blame': 'LightlineGitBlame',
+  \ }
+\ }
+
+function! LightlineGitBlame() abort
+  let blame = get(b:, 'coc_git_blame', '')
+  " return blame
+  return winwidth(0) > 120 ? blame : ''
+endfunction
+>>>>>>> c933664b62b7be68cfd57e02ec55308fb095c946
+>>>>>>> 89668a4845bd28168a879b4c717e1ba172c354a6
