@@ -123,6 +123,7 @@ export TERM="xterm-256color"
 
 bindkey -v 
 export KEYTIMEOUT=1
+alias vs='vim $(fzf --height 40% --reverse)'
 alias nvimrc='nvim ~/.config/nvim/init.vim'
 
 autoload -Uz history-search-end
@@ -138,5 +139,6 @@ bindkey -M viins '^[[A' history-beginning-search-backward-end \
                  '^[OA' history-beginning-search-backward-end \
                  '^[[B' history-beginning-search-forward-end \
                  '^[OB' history-beginning-search-forward-end
-export KEYTIMEOUT=100
+bindkey "^R" history-incremental-search-backward
+export KEYTIMEOUT=10
 
