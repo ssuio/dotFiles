@@ -190,5 +190,5 @@ xmap ig <Plug>(coc-git-chunk-inner)
 omap ag <Plug>(coc-git-chunk-outer)
 xmap ag <Plug>(coc-git-chunk-outer)
 
-set list
-set listchars=tab:‣\ ,trail:·
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() 
+            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
