@@ -5,8 +5,7 @@ set nu rnu
 call plug#begin()
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
