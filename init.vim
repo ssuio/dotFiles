@@ -164,6 +164,7 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 noremap <Leader>o :Files<CR>
+noremap <Leader>b :Buffers<CR>
 noremap <Leader>L :Format<CR>
 noremap <Leader>F :Lines<CR>
 noremap <Leader>f :BLines<CR>
@@ -192,3 +193,4 @@ xmap ag <Plug>(coc-git-chunk-outer)
 
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() 
             \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
