@@ -124,6 +124,8 @@ export TERM="xterm-256color"
 bindkey -v 
 export KEYTIMEOUT=1
 alias vs='vim $(fzf --height 40% --reverse)'
+alias cs='code $(fzf --height 40% --reverse)'
+alias csn='code -n $(fzf --height 40% --reverse)'
 alias nvimrc='nvim ~/.config/nvim/init.vim'
 
 autoload -Uz history-search-end
